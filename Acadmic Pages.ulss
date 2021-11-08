@@ -1,0 +1,546 @@
+// Title:  		Academic Pages.ulss
+// Author: 		Brian Prost
+// Description: A Ulysses export style to mimic the 'Academic Report' template in Apple Pages.
+
+////////////////////////////////
+// Document & Layout Settings //
+////////////////////////////////
+
+// Global Variables
+$last-name = 				"Prost"
+$indent = 					0.5in
+$accent-color = 			#060082
+$serif-font =				"Canela Deck"
+$sans-serif-font =			"Graphik"
+$monospaced-font = 			"Menlo"
+
+document-settings {
+	page-inset-top:		1in;	page-inset-inner:	1in
+	page-inset-bottom:	1in;	page-inset-outer:	1in
+
+	section-break:			paragraph-divider
+
+	two-sided:				no
+	page-binding:			left
+
+	page-number-format: 	$last-name + " %p"
+	page-number-reset: 		none
+	page-number-style: 		decimal
+
+	footnote-enumeration:	per-section
+	footnote-placement:		end-of-page
+	footnote-style:			decimal
+}
+
+////////////////////////
+// Default Typography //
+////////////////////////
+
+defaults {
+	font-family:			$sans-serif-font
+	font-weight:			normal
+	font-size:				12pt
+	line-height:			18pt
+
+	orphans-and-widows:		prevented
+
+	text-alignment:			left
+	hyphenation:			no
+}
+
+/////////////////////////////////////
+// Basic Non-Text-Area Page Layout //
+/////////////////////////////////////
+
+area-header {
+	content:				page-number
+
+	top-spacing:			10.23mm
+	bottom-spacing:			10.23mm
+
+	font-family:			$sans-serif-font
+	text-alignment:			right
+
+	font-size:				10pt
+}
+
+area-header:first-page {
+	content:				none
+}
+
+
+area-footnotes {
+	font-size:				10pt
+	line-height:			14pt
+
+	top-spacing:			3mm
+
+	text-inset:				0pt
+
+	divider-length:			55mm
+	divider-width:			0.5pt
+}
+
+area-footnotes:anchor {
+	font-weight:			bold
+}
+
+area-footer {
+	text-alignment:			center
+	top-spacing:			3mm
+	bottom-spacing:			10mm
+	font-size:				10pt
+}
+
+@code {
+	font-family:			"Menlo"
+	font-size:				10pt
+	font-weight:			normal
+	font-slant:				normal
+	// Reset all traits to normal, since this can appear anywhere
+}
+
+/////////////
+// Headers //
+/////////////
+
+heading-all {
+	font-weight:			bold
+	keep-with-following:	true
+	text-alignment:			left
+	font-color:				$accent-color
+}
+
+heading-1 {
+	style-title:			"Title"
+	font-family:			$serif-font
+	font-weight:			bold
+	font-size:				28pt
+	line-height:			25.2pt
+
+	text-alignment:			center
+	margin-top:				3.5in
+	margin-bottom:			3.5mm
+}
+
+heading-2 {
+	style-title:			"Heading 2"
+	font-size:				18pt
+	line-height:			9pt
+	text-alignment:			center
+
+	margin-top:				7mm
+	margin-bottom:			5mm
+}
+
+heading-1 + heading-2 {
+	style-title:			"Subtitle"
+	font-weight:			normal
+	font-color:				#000000
+	font-size:				18pt
+	line-height:			21pt
+	margin-top:				0mm
+
+}
+
+paragraph-divider + heading-2 {
+	margin-top:				0mm
+	page-break:				before
+}
+
+heading-3 {
+	style-title:			"Heading 3"
+	font-size:				14pt
+	line-height:			16pt
+
+	margin-top:				4mm
+	margin-bottom:			4mm
+	text-alignment:			left
+}
+
+heading-5 {
+	style-title:			"References"
+	font-size:				14pt
+	line-height:			16pt
+	page-break:				before
+
+	margin-top:				7mm
+	margin-bottom:			4.5mm
+}
+
+heading-6 {
+	style-title:			"Reference Instance"
+	font-family:			$sans-serif-font
+	font-size:				12pt
+	font-weight:			normal
+	line-height:			18pt
+	margin-left: 			$indent
+	first-line-indent: 		0in - $indent
+	orphans-and-widows:		prevented
+}
+
+
+
+//////////////////////
+// Paragraph styles //
+//////////////////////
+
+paragraph {
+	margin-bottom:			3mm
+	margin-top:				3mm
+	hyphenation:			no
+}
+
+paragraph:first {
+	margin-top:				0mm
+}
+
+heading-all + paragraph {
+	margin-top:				0mm
+	first-line-indent:		0pt
+	// Do not indent the first paragraph after any headline
+}
+
+paragraph-divider {
+	content:				""
+	visibility:				hidden
+}
+
+
+
+////////////
+// Images //
+////////////
+
+paragraph-figure {
+	margin-top:				5mm
+	margin-bottom:			3mm
+	margin-right:			25mm
+	margin-left:			25mm
+}
+
+figure-caption {
+	font-family:			"Canela Text"
+	font-size:				10pt
+	line-height:			15pt
+	margin-top:				3mm
+	text-alignment:			center
+}
+
+
+//////////////////
+// Block styles //
+//////////////////
+
+block-code : @code {
+	first-line-indent:		-4em
+	line-height:			120%
+	font-color:				#000000
+	margin-left:			4em
+	margin-right:			0mm
+	margin-bottom:			6mm
+	margin-top:				6mm
+}
+
+block-code paragraph{
+	margin-top:				0pt
+	margin-bottom:			0pt
+	hyphenation:			no
+	default-tab-interval:	4em
+}
+
+block-quote{
+	margin-left:			15mm
+	margin-right:			15mm
+	margin-top:				5mm
+}
+
+block-quote paragraph{
+	hyphenation:			no
+
+	keep-with-following:	yes
+}
+
+block-raw {
+	visibility:				hidden
+	// kills raw source blocks
+}
+
+block-comment {
+	visibility:				hidden
+}
+
+
+/////////////////////////////
+// Title Page Attributions //
+/////////////////////////////
+
+heading-1 + heading-2 + block-comment {
+	style-title:			"Title Page Attributions"
+	visibility:				visible
+	margin-top:				52.50mm
+	margin-bottom:			0mm
+
+	font-weight:			normal
+	font-color:				#000000
+	font-size:				13pt
+	line-height:			6pt
+	text-alignment:			center
+}
+
+
+
+/////////////////
+// List styles //
+/////////////////
+
+list-all {
+	margin-left:			7mm
+	margin-top:				3mm
+	margin-bottom:			3mm
+}
+
+list-all paragraph {
+	margin-top:				1mm
+	margin-bottom:			0mm
+}
+
+list-all list-all {
+	margin-top:				0pt
+	margin-bottom:			0pt
+	// No extra spacings between nested ordered and unordered lists
+}
+
+list-ordered {
+	enumeration-format:		"%d."
+	text-inset:				1.3em
+	// Simulates tab stop justified right
+}
+
+list-ordered list-ordered {
+	enumeration-format:		"%*%d"
+	text-inset:				4em
+	// Simulates tab stop justified right
+}
+
+list-ordered list-ordered list-ordered {
+	enumeration-format:		"%*.%d"
+	text-inset:				6em
+	// Simulates tab stop justified right
+}
+
+list-unordered {
+	enumeration-format:		"-"
+	text-inset:				1.3em
+	// Simulates tab stop justified right
+}
+
+list-unordered list-unordered {
+	enumeration-format:		"*"
+	text-inset:				4em
+	// Simulates tab stop justified right
+}
+
+
+
+///////////////////
+// Inline styles //
+///////////////////
+
+inline-strong {
+	font-weight:			bold
+}
+
+inline-emphasis {
+	font-slant:				italic
+}
+
+inline-mark {
+	background-color:		#E5E5E5
+}
+
+inline-citation {
+	font-slant:				italic
+}
+
+inline-code : @code {
+	// Nothing else to set here, since it inherits from @code
+}
+
+inline-link {
+	font-family:			"Menlo"
+	underline:				single
+}
+
+inline-footnote {
+	font-weight:			bold
+}
+
+inline-comment {
+	visibility:				hidden
+	font-color:				#77787B
+	background-color:		#E6E7E8
+}
+
+inline-annotation {
+	background-color:		#dadada
+}
+
+inline-annotation:anchor {
+	background-color:		#ffffff
+}
+
+inline-raw {
+	visibility:				hidden
+	// kills raw source
+}
+
+inline-delete {
+	strikethrough:			single
+	strikethrough-color:	#000000
+}
+
+//////////////////////////////////////////////
+// Ulysses specific stuff ////////////////////
+// By default, we are hiding tags (##) etc. //
+//////////////////////////////////////////////
+
+inline-comment ulysses-tag {
+	visibility:				visible
+}
+
+inline-comment inline-strong ulysses-tag {
+	visibility:				visible
+}
+
+inline-comment inline-emphasis ulysses-tag {
+	visibility:				hidden
+}
+
+inline-comment inline-link ulysses-tag {
+	visibility:				hidden
+}
+
+inline-comment inline-annotation ulysses-tag {
+	visibility:				hidden
+}
+
+inline-comment inline-code ulysses-tag {
+	visibility:				hidden
+}
+
+inline-comment inline-delete ulysses-tag {
+	visibility:				hidden
+}
+
+inline-comment inline-mark ulysses-tag {
+	visibility:				hidden
+}
+
+
+///////////////////
+// Syntax styles //
+///////////////////
+
+syntax-all {
+}
+
+syntax-entity {
+	font-color:				#7a7a7a
+	font-weight:			bold
+}
+
+syntax-tag {
+	font-color:				#000000
+	font-weight:			bold
+}
+
+syntax-keyword {
+	font-color:				#000000
+	font-weight:			bold
+	font-slant:				italic
+}
+
+syntax-parameter {
+	font-color:				#777777
+	font-weight:			bold
+	font-slant:				italic
+}
+
+syntax-string {
+	font-color:				#555555
+	font-slant:				italic
+}
+
+syntax-constant {
+	font-color:				#555555
+	font-weight:			bold
+	underline:				single
+}
+
+syntax-variable {
+	font-color:				#555555
+	font-weight:			bold
+	underline:				single
+	font-slant:				italic
+}
+
+syntax-escape {
+	font-weight:			bold
+	font-color:				#333333
+}
+
+syntax-comment {
+	font-color:				#999999
+}
+
+syntax-error {
+	font-color:				#999999
+	font-weight:			bold
+}
+
+///////////////////
+// Markup styles //
+///////////////////
+
+syntax-heading {
+	font-weight:			bold
+	font-color:				#000000
+	font-slant:				italic
+}
+
+syntax-italic {
+	font-slant:				italic
+	font-slant:				italic
+}
+
+syntax-bold {
+	font-weight:			bold
+	font-slant:				italic
+}
+
+syntax-deleted {
+	font-color:				#999999
+	font-slant:				italic
+}
+
+syntax-inserted {
+	font-color:				#000000
+	font-weight:			bold
+	font-slant:				italic
+}
+
+syntax-changed {
+	font-color:				#555555
+	font-slant:				italic
+}
+
+syntax-link {
+	underline:				single
+	font-color:				#000000
+	font-slant:				italic
+}
+
+syntax-list {
+	font-color:				#000000
+}
