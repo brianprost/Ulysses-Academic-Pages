@@ -7,7 +7,7 @@
 ////////////////////////////////
 
 // Global Variables
-$last-name = 				"Prost"
+$last-name = 				"Van Halen"
 $indent = 					0.5in
 $accent-color = 			#060082
 $serif-font =				"Canela Deck"
